@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a id="nav-myevents" href="my-events.html" style="display: none; color: var(--secondary); font-weight: 600;">My Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a class="active" href="contact.html">Contact</a>
+          <a id="nav-admin" href="admin-login.html">Admin</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="form-wrapper">
+        <h2>Contact Event Desk</h2>
+        <p class="notice">
+          Reach out for registration help, sponsorship, or event partnerships.
+        </p>
+        <form>
+          <div>
+            <label for="contactName">Name</label>
+            <input id="contactName" type="text" placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label for="contactEmail">Email</label>
+            <input id="contactEmail" type="email" placeholder="jane@college.edu" />
+          </div>
+          <div>
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="How can we help?"></textarea>
+          </div>
+          <button id="contact-send" class="btn btn-primary" type="button">
+            Send Message
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventdesk@college.edu</p>
+          <p class="small">+1 (555) 210-2233</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+      const contactButton = document.getElementById("contact-send");
+      if (contactButton) {
+        contactButton.addEventListener("click", () => {
+          window.alert("Thanks for reaching out! We will reply shortly.");
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Marking</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a class="active" id="nav-admin" href="admin-dashboard.html">Dashboard</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2 class="section-title">Mark Attendance</h2>
+        <p class="notice">Mark student attendance for completed events.</p>
+        
+        <div style="margin-bottom: 24px;">
+          <label for="attendance-event" style="font-weight: 600;">Select Event</label>
+          <select id="attendance-event" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #d1d5db; font-size: 15px; margin-top: 8px;">
+            <option value="">Choose an event...</option>
+          </select>
+        </div>
+
+        <div id="attendance-container"></div>
+      </section>
+
+      <section style="margin-top: 40px;">
+        <h2 class="section-title">Attendance Summary</h2>
+        <table class="table" id="attendance-summary-table">
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Total Registered</th>
+              <th>Attended</th>
+              <th>Attendance %</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-summary-tbody"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventdesk@college.edu</p>
+          <p class="small">+1 (555) 210-2233</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/attendance.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+      window.attendance.loadAttendancePage();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a class="active" href="events.html">Events</a>
+          <a href="event-calendar.html">Calendar</a>
+          <a id="nav-myevents" href="my-events.html" style="display: none; color: var(--secondary); font-weight: 600;">My Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a id="nav-admin" href="admin-login.html">Admin</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2 class="section-title">All Events</h2>
+        <p class="notice">Search and register for upcoming events.</p>
+        <div class="filters">
+          <input id="event-search" type="text" placeholder="Search events by title, venue, or description" />
+          <select id="event-category">
+            <option value="">All categories</option>
+            <option>Technology</option>
+            <option>Culture</option>
+            <option>Career</option>
+            <option>Sports</option>
+            <option>Workshop</option>
+          </select>
+          <select id="event-club">
+            <option value="">All clubs</option>
+            <option>Computer Science Club</option>
+            <option>Cultural Affairs Club</option>
+            <option>Placement Committee</option>
+            <option>Sports Council</option>
+            <option>Debate Club</option>
+          </select>
+          <input id="event-date-from" type="date" placeholder="From date" />
+          <input id="event-date-to" type="date" placeholder="To date" />
+          <select id="event-capacity">
+            <option value="">All capacities</option>
+            <option value="available">Available seats only</option>
+            <option value="almost-full">Almost full (80%+)</option>
+            <option value="full">Show all events</option>
+          </select>
+        </div>
+        <div id="events-grid" class="grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventdesk@college.edu</p>
+          <p class="small">+1 (555) 210-2233</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+      window.events.setupEventFilters();
+      window.events.renderEvents();
+    </script>
+  </body>
+</html>

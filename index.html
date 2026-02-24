@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Event Management</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a class="active" href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a href="event-calendar.html">Calendar</a>
+          <a id="nav-myevents" href="my-events.html" style="display: none; color: var(--secondary); font-weight: 600;">My Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a id="nav-admin" href="admin-login.html">Admin</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div>
+          <h1>Plan, discover, and manage college events effortlessly.</h1>
+          <p>
+            From tech summits to cultural nights, explore a curated calendar of
+            campus experiences and register in seconds.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="events.html">Browse Events</a>
+            <a class="btn btn-outline" href="register.html">Join as Student</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>What you can do</h2>
+          <ul>
+            <li>Register and login securely</li>
+            <li>View upcoming events with details</li>
+            <li>Register for events instantly</li>
+            <li>Track your event registrations</li>
+            <li>View your attendance history</li>
+            <li>Admins manage events and registrations</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Upcoming Highlights</h2>
+        <div id="events-grid" class="grid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventdesk@college.edu</p>
+          <p class="small">+1 (555) 210-2233</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+      window.events.renderEvents();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .calendar-nav {
+        display: flex;
+        gap: 16px;
+      }
+      .calendar-grid {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--surface);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .calendar-grid th,
+      .calendar-grid td {
+        padding: 12px;
+        border: 1px solid #e5e7eb;
+        text-align: center;
+        min-height: 100px;
+      }
+      .calendar-grid th {
+        background: var(--primary);
+        color: white;
+        font-weight: 600;
+      }
+      .calendar-grid td {
+        vertical-align: top;
+        background: var(--bg);
+      }
+      .calendar-grid td.other-month {
+        opacity: 0.5;
+      }
+      .calendar-grid td.today {
+        background: var(--bg-accent);
+        border: 2px solid var(--primary);
+      }
+      .calendar-day {
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .calendar-events {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .event-dot {
+        display: inline-block;
+        padding: 2px 6px;
+        background: var(--primary);
+        color: white;
+        border-radius: 3px;
+        font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a id="nav-myevents" href="my-events.html" style="display: none; color: var(--secondary); font-weight: 600;">My Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a id="nav-admin" href="admin-login.html">Admin</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section>
+        <h2 class="section-title">Event Calendar</h2>
+        
+        <div class="calendar-header">
+          <div>
+            <h3 id="calendar-month" style="margin: 0; font-size: 24px;"></h3>
+          </div>
+          <div class="calendar-nav">
+            <button class="btn btn-outline" onclick="window.calendar.previousMonth()">← Previous</button>
+            <button class="btn btn-outline" onclick="window.calendar.currentMonth()">Today</button>
+            <button class="btn btn-outline" onclick="window.calendar.nextMonth()">Next →</button>
+          </div>
+        </div>
+
+        <table class="calendar-grid" id="calendar-grid"></table>
+        
+        <div id="calendar-legend" style="margin-top: 20px; padding: 16px; background: var(--bg-accent); border-radius: 12px;">
+          <h4 style="margin-top: 0;">Legend</h4>
+          <p style="margin: 8px 0;"><span class="event-dot" style="background: var(--primary);">Event</span> - Upcoming event</p>
+          <p style="margin: 8px 0;"><span class="event-dot" style="background: var(--secondary);">Event</span> - Your registered event</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventdesk@college.edu</p>
+          <p class="small">+1 (555) 210-2233</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+      window.calendar.renderCalendar();
+    </script>
+  </body>
+</html>
