@@ -1,0 +1,35 @@
+# Node dependencies
+node_modules/
+backend/node_modules/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Logs and runtime artifacts
+*.log
+logs/
+backend/*.log
+backend/*_stdout.log
+backend/*_stderr.log
+backend/*_out.log
+backend/*_err.log
+
+# Local runtime/cache folders
+.runtime/
+.hotreload/
+
+# Local MySQL data directory
+mysql-local/
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/*.log
+
+# PowerShell helper outputs (keep scripts, ignore generated artifacts)
+backend/realtime_health_check.ps1
