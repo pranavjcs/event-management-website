@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database Design</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container">
+        <a class="brand" href="index.html">Campus Events</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="events.html">Events</a>
+          <a id="nav-register" href="register.html">Register</a>
+          <a id="nav-login" href="login.html">Login</a>
+          <a href="contact.html">Contact</a>
+          <a id="nav-admin" href="admin-login.html">Admin</a>
+          <button id="theme-toggle" class="btn btn-outline toggle" type="button">
+            Dark Mode
+          </button>
+          <a id="nav-logout" href="#">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="form-wrapper">
+        <h2>Database Design (3NF)</h2>
+        <p class="notice">
+          The database is normalized to 3NF to remove redundancy and ensure
+          referential integrity.
+        </p>
+
+        <h3>Tables and Attributes</h3>
+        <ul>
+          <li>
+            STUDENT (student_id PK, full_name, email UNIQUE, department,
+            password_hash, created_at)
+          </li>
+          <li>
+            ADMIN (admin_id PK, full_name, email UNIQUE, password_hash,
+            created_at)
+          </li>
+          <li>
+            EVENT (event_id PK, admin_id FK, title, category, event_date,
+            event_time, venue, seats, description)
+          </li>
+          <li>
+            REGISTRATION (registration_id PK, event_id FK, student_id FK,
+            registered_at)
+          </li>
+        </ul>
+
+        <h3>SQL CREATE TABLE</h3>
+        <pre>
+CREATE TABLE STUDENT (
+  student_id VARCHAR(20) PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(120) NOT NULL UNIQUE,
+  department VARCHAR(80) NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE ADMIN (
+  admin_id VARCHAR(20) PRIMARY KEY,
+  full_name VARCHAR(100) NOT NULL,
+  email VARCHAR(120) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE EVENT (
+  event_id VARCHAR(20) PRIMARY KEY,
+  admin_id VARCHAR(20) NOT NULL,
+  title VARCHAR(150) NOT NULL,
+  category VARCHAR(60) NOT NULL,
+  event_date DATE NOT NULL,
+  event_time VARCHAR(20) NOT NULL,
+  venue VARCHAR(100) NOT NULL,
+  seats INT NOT NULL,
+  description TEXT NOT NULL,
+  CONSTRAINT fk_event_admin FOREIGN KEY (admin_id)
+    REFERENCES ADMIN(admin_id)
+);
+
+CREATE TABLE REGISTRATION (
+  registration_id VARCHAR(20) PRIMARY KEY,
+  event_id VARCHAR(20) NOT NULL,
+  student_id VARCHAR(20) NOT NULL,
+  registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT fk_reg_event FOREIGN KEY (event_id)
+    REFERENCES EVENT(event_id),
+  CONSTRAINT fk_reg_student FOREIGN KEY (student_id)
+    REFERENCES STUDENT(student_id)
+);
+        </pre>
+
+        <h3>ER Diagram (Text Representation)</h3>
+        <p>
+          ADMIN (1) --- creates --- (N) EVENT
+          <br />
+          STUDENT (1) --- registers --- (N) REGISTRATION --- belongs to --- (1)
+          EVENT
+        </p>
+        <pre>
+ADMIN ||--o{ EVENT : creates
+STUDENT ||--o{ REGISTRATION : registers
+EVENT ||--o{ REGISTRATION : has
+        </pre>
+        <p class="small">
+          One admin creates many events. One student can register for many
+          events, and each event can have many registrations. REGISTRATION is
+          the associative entity resolving the many-to-many relationship.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <h3>Campus Events</h3>
+          <p class="small">Professional event management for every department.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <p class="small"><a href="events.html">Events</a></p>
+          <p class="small"><a href="register.html">Student Register</a></p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p class="small">eventsdesk@campus.in</p>
+          <p class="small">+91 44 2812 3456</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/validation.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+      window.auth.setNavState();
+      window.auth.attachLogout();
+    </script>
+  </body>
+</html>

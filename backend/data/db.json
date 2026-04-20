@@ -1,0 +1,91 @@
+{
+  "admins": [
+    {
+      "id": "ADM-001",
+      "name": "Campus Admin",
+      "email": "admin@college.edu",
+      "password": "Admin@123"
+    }
+  ],
+  "students": [
+    {
+      "id": "STD-1773904884649",
+      "fullName": "Aarav Iyer",
+      "email": "student.api.test@college.edu",
+      "department": "CSE",
+      "password": "Test@1234"
+    },
+    {
+      "id": "STD-1776694762105",
+      "fullName": "Rahul Verma",
+      "email": "new.user.20260420141921@college.edu",
+      "department": "Computer Science",
+      "password": "Test@1234"
+    },
+    {
+      "id": "STD-1776695153146-5222",
+      "fullName": "Priya Nair",
+      "email": "new.student.20260420142551979@college.edu",
+      "department": "Computer Science",
+      "password": "Test@1234"
+    }
+  ],
+  "events": [
+    {
+      "id": "EVT-1001",
+      "title": "AI Innovation Conclave",
+      "category": "Technology",
+      "club": "Coding Club",
+      "date": "2026-05-12",
+      "time": "10:00 AM",
+      "venue": "Dr. APJ Abdul Kalam Auditorium",
+      "description": "Explore practical AI solutions with startup founders, researchers, and student innovators.",
+      "seats": 120
+    },
+    {
+      "id": "EVT-1002",
+      "title": "Rangmanch Utsav 2026",
+      "category": "Culture",
+      "club": "Cultural Committee",
+      "date": "2026-06-05",
+      "time": "05:30 PM",
+      "venue": "Central Quadrangle",
+      "description": "Celebrate campus culture with folk dance, indie music, theatre, and food stalls.",
+      "seats": 300
+    },
+    {
+      "id": "EVT-1003",
+      "title": "Campus Placement Prep Bootcamp",
+      "category": "Career",
+      "club": "Training and Placement Cell",
+      "date": "2026-05-22",
+      "time": "02:00 PM",
+      "venue": "Training and Placement Cell Hall",
+      "description": "Build interview confidence through resume clinics, mock rounds, and recruiter Q&A.",
+      "seats": 80
+    }
+  ],
+  "registrations": [
+    {
+      "id": "REG-1773904995371",
+      "eventId": "EVT-1002",
+      "eventTitle": "Rangmanch Utsav 2026",
+      "name": "Aarav Iyer",
+      "email": "student.api.test@college.edu",
+      "year": "3rd Year"
+    }
+  ],
+  "attendance": {},
+  "reviews": [
+    {
+      "id": "REV-1773905010606",
+      "eventId": "EVT-1002",
+      "eventTitle": "Rangmanch Utsav 2026",
+      "email": "student.api.test@college.edu",
+      "name": "Aarav Iyer",
+      "rating": 5,
+      "review": "Fantastic performances and very well organized campus festival.",
+      "date": "2026-04-20"
+    }
+  ]
+}
